@@ -76,9 +76,25 @@
 
 # wget -O /opt/shibboleth-idp/credentials/metadata-federation-renater.crt https://federation.renater.fr/test/metadata-federation-renater.crt
 
+## Faire la conf des attributs ldap
+
+#### CAS
+# cd /opt/src/
+# git clone https://github.com/Unicon/shib-cas-authn3 shib-cas-authn3-git-master
+# cp -R /opt/src/shib-cas-authn3-git-master/IDP_HOME/flows/authn/Shibcas/ /opt/shibboleth-idp/flows/authn/
+# wget https://github.com/Unicon/shib-cas-authn3/releases/download/v3.0.0/shib-cas-authenticator-3.0.0.jar 
+# mv shib-cas-authenticator-3.0.0.jar /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ 
+# wget http://central.maven.org/maven2/org/jasig/cas/client/cas-client-core/3.3.3/cas-client-core-3.3.3.jar 
+# mv cas-client-core-3.3.3.jar /opt/shibboleth-idp/edit-webapp/WEB-INF/lib/ 
+
+# TODO faire la conf CAS
+
+# /opt/shibboleth-idp/bin/build.sh 
+# service tomcat restart
 
 
 
 
-
-
+#### new attr
+# cd /opt/shibboleth-idp/conf/ 
+# wget -O /opt/shibboleth-idp/conf/attribute-resolver-ldap.xml https://test.federation.renater.fr/exemples/conf_idp3/attribute-resolver.xml 
